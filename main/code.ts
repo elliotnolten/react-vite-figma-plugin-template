@@ -1,20 +1,18 @@
-figma.showUI(__html__, { themeColors: true, height: 300 })
+figma.showUI(__html__, { themeColors: true, height: 640, width: 640 })
+
+// @ts-ignore
+figma.on("drop", (event: DropEvent) => {
+  console.log(event);
+  const {x, y, items} = event
+  figma.createImageAsync(items[0].data).then((image: Image) => {
+    const node = figma.createRectangle();
+    node.x = x;
+    node.y = y;
+    node.resize(400, 400);
+    node.fills = [{type: 'IMAGE', scaleMode: 'FILL', imageHash: image.hash}];
+  });
+})
 
 figma.ui.onmessage = (msg) => {
-  if (msg.type === 'create-rectangles') {
-    const nodes = []
-
-    for (let i = 0; i < msg.count; i++) {
-      const rect = figma.createRectangle()
-      rect.x = i * 150
-      rect.fills = [{ type: 'SOLID', color: { r: 0.4, g: 0.2, b: 0.9 } }]
-      figma.currentPage.appendChild(rect)
-      nodes.push(rect)
-    }
-
-    figma.currentPage.selection = nodes
-    figma.viewport.scrollAndZoomIntoView(nodes)
-  }
-
-  figma.closePlugin()
+  
 }

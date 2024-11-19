@@ -1,9 +1,9 @@
 {
-  "name": "React Vite Figma Plugin Template",
-  "id": "",
-  "api": "1.0.0",
-  "editorType": ["figma", "figjam"],
-  "permissions": [],
-  "main": "dist/code.js",
-  "ui": "dist/index.html"
+	"name": "Dimma POC",
+	"id": "",
+	"api": "1.0.0",
+	"editorType": ["figma"],
+	"permissions": [],
+	"main": "dist/code.js",
+	"ui": "dist/index.html"
 }
