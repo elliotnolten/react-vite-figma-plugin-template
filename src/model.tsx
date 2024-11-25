@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { useAppState } from "./shared/context/useAppContext";
 
 type GLTFResult = GLTF & {
 	nodes: {
@@ -12,13 +13,14 @@ type GLTFResult = GLTF & {
 };
 
 const dimmaURL =
-	"https://web-api.ikea.com/dimma/assets/geomagical/59270066/PS01_S01_NV01/simple/glb_draco/G-59270066-3bf24fdc38be0ae69cd798924e119642c2f12a12_07cc334f67ea4fc496eee39296c20210.glb?cn=ingka-design";
-
-const dimmaProxy = `http://localhost:8080/get-dimma-model?url=${dimmaURL}`;
+	"https://web-api.ikea.com/dimma/assets/1.2/90472830/PS01_S01_NV01/rqp3/glb_draco/90472830_PS01_S01_NV01_RQP3_3.0_e105e50136c549a891fa305609e4b2a7.glb?cn=elliot.nolten";
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
+	const state = useAppState();
+	console.log(state);
+	const dimmaProxy = `http://localhost:8080/get-dimma-model?url=${state.uri}`;
 	const { scene } = useGLTF(dimmaProxy) as GLTFResult;
 	return <primitive object={scene} {...props} scale={1} />;
 }
 
-useGLTF.preload(dimmaProxy);
+// useGLTF.preload(dimmaProxy);

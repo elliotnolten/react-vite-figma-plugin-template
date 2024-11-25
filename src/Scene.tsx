@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import {
+	AccumulativeShadows,
+	CameraControls,
+	OrbitControls,
+	PerspectiveCamera,
+	RandomizedLight,
+} from "@react-three/drei";
 import * as THREE from "three";
 import { Model } from "./model";
 import { CaptureButton } from "./CaptureButton";
@@ -22,11 +28,24 @@ export function Scene() {
 					setCamera(camera);
 					gl.setPixelRatio(window.devicePixelRatio);
 				}}
+				shadows
+				camera={{ position: [0, 0, 5], fov: 60 }}
 			>
+				<PerspectiveCamera makeDefault position={[0, 0, 5]} />
 				<OrbitControls enablePan />
 				<ambientLight intensity={5} />
 				<pointLight position={[1, 1, 1]} intensity={5} />
 				<Model position={[0, -1, 0]} />
+				<AccumulativeShadows
+					temporal
+					frames={100}
+					color="#9d4b4b"
+					colorBlend={0.5}
+					alphaTest={0.9}
+					scale={20}
+				>
+					<RandomizedLight amount={8} radius={4} position={[5, 5, -10]} />
+				</AccumulativeShadows>
 			</Canvas>
 			<Screenshot image={image} />
 			{gl && scene && camera && (
