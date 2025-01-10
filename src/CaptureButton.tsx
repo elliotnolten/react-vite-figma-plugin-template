@@ -38,7 +38,11 @@ export function CaptureButton({
 	if (!gl || !scene || !camera) return null;
 
 	return (
-		<button onClick={captureImage} style={{ position: "absolute", bottom: 10 }}>
+		<button
+			className="button button--primary"
+			onClick={captureImage}
+			style={{ position: "absolute", bottom: 10 }}
+		>
 			Take screenshot
 		</button>
 	);

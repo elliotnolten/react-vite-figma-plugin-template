@@ -12,15 +12,13 @@ type GLTFResult = GLTF & {
 	};
 };
 
-const dimmaURL =
-	"https://web-api.ikea.com/dimma/assets/1.2/90472830/PS01_S01_NV01/rqp3/glb_draco/90472830_PS01_S01_NV01_RQP3_3.0_e105e50136c549a891fa305609e4b2a7.glb?cn=elliot.nolten";
+const dimmaProxy = "http://localhost:8080/get-dimma-model?url=";
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
 	const state = useAppState();
-	console.log(state);
-	const dimmaProxy = `http://localhost:8080/get-dimma-model?url=${state.uri}`;
-	const { scene } = useGLTF(dimmaProxy) as GLTFResult;
+	const { uri } = state;
+	console.log({ uri });
+	const modelURI = `${dimmaProxy}${uri}`;
+	const { scene } = useGLTF(modelURI) as GLTFResult;
 	return <primitive object={scene} {...props} scale={1} />;
 }
-
-// useGLTF.preload(dimmaProxy);

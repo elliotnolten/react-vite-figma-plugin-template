@@ -1,5 +1,3 @@
-import * as React from "react";
-
 export function Screenshot({ image }: { image: string | null }) {
 	if (!image) return null;
 

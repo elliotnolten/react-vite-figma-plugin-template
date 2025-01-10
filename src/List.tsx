@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAppState, useAppDispatch } from "./shared/context/useAppContext";
+import { initState } from "./shared/context/initState";
 
 type Model = {
 	productName: string;
@@ -29,14 +30,17 @@ export function List() {
 	}, []);
 
 	return (
-		<aside style={{ width: "20%", display: "flex" }}>
+		<aside
+			style={{ width: 240, overflowY: "scroll" }}
+			className="flex p-xsmall flex-shrink"
+		>
 			<ul
 				style={{ listStyle: "none", padding: 0, margin: 0, textAlign: "left" }}
 			>
 				{models.map((model, index) => {
 					const { productName, typeName, models } = model;
 
-					const { uri } = models[0];
+					const { uri } = models[0] || { uri: initState.uri };
 					return (
 						<li key={index}>
 							<a

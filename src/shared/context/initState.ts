@@ -1,3 +1,6 @@
 export const initState = {
-	uri: "https://web-api.ikea.com/dimma/assets/1.2/90472830/PS01_S01_NV01/rqp3/glb_draco/90472830_PS01_S01_NV01_RQP3_3.0_e105e50136c549a891fa305609e4b2a7.glb?cn=elliot.nolten",
+	uri: "https://web-api.ikea.com/dimma/assets/geomagical/99197936/PS01_S01_NV01/simple/glb_draco/G-99197936-9b5d918212fc679d4b76151fccd7817fb0c0e7b5_0cf524fe53ac46d7b82e6be88bb5ce06.glb?cn=elliot.nolten",
 };
+
+const models =
+	"https://web-api.ikea.com/dimma/assets/geomagical/99197936/PS01_S01_NV01/simple/glb_draco/G-99197936-9b5d918212fc679d4b76151fccd7817fb0c0e7b5_0cf524fe53ac46d7b82e6be88bb5ce06.glb?cn=elliot.nolten";
