@@ -12,11 +12,8 @@ export function CaptureButton({
     camera: THREE.Camera;
 }) {
     const captureImage = () => {
-        const width = 4096 * 4; // Desired width of the image
-        const height = 4096 * 4; // Desired height of the image
-
         // Create a temporary WebGL render target
-        const renderTarget = new THREE.WebGLRenderTarget(width, height);
+        const renderTarget = new THREE.WebGLRenderTarget();
 
         // Clear the render target
         gl.setRenderTarget(renderTarget);

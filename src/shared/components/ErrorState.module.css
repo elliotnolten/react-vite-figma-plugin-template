@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--figma-color-text);
+    background: var(--figma-color-bg);
+    padding: 1rem;
+    text-align: center;
+}
+
+.message {
+    margin: 0;
+    font-size: 14px;
+}

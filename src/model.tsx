@@ -18,6 +18,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
     const state = useAppState();
     const { uri } = state;
     const modelURI = `${dimmaProxy}${uri}`;
+    console.log("Loading model from:", modelURI);
     const { scene } = useGLTF(modelURI) as GLTFResult;
 
     scene.traverse((child) => {
